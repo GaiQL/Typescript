@@ -1,0 +1,19 @@
+{
+  "name": "ts",
+  "version": "1.0.0",
+  "description": "由微软开发和维护，JavaScript 的超集，TypeScript 兼容 JavaScript，可以载入 JavaScript 代码然后运行。  遵循ES6脚本语言规范。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GaiQL/ajax.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GaiQL/ajax/issues"
+  },
+  "homepage": "https://github.com/GaiQL/ajax#readme"
+}

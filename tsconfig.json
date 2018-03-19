@@ -1,0 +1,17 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "module": "system",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outDir":"./jusModule",
+        "inlineSourceMap":true
+    },
+    "include": [
+        "*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

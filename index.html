@@ -7,6 +7,32 @@
   <body>
 
 
+    <!--
+        tsconfig.json中的一些配置含义
+
+        "compilerOptions": {
+            "module": "system",
+            "noImplicitAny": true,
+            "removeComments": true,
+            "preserveConstEnums": true,
+            "outFile": "../../built/local/tsc.js",
+            "sourceMap": true,
+            "outDir":"./jusModule"
+        },
+
+        noImplicitAny：在表达式和声明上有隐含的 any类型时报错。
+        removeComments：删除所有注释，除了以 /!*开头的版权信息。
+        preserveConstEnums：保留 const和 enum声明。
+        sourceMap：生成相应的 .map文件。
+        inlineSourceMap：	生成单个sourcemaps文件，而不是将每sourcemaps生成不同的文件。
+        inlineSources：将代码与sourcemaps生成到一个文件中，要求同时设置了 inlineSourceMap或 sourceMap属性。
+        outDir:指定输出目录
+        strictNullChecks:
+
+    -->
+
+    <!-- <script src="jusModule/baseType.js"></script> -->
+    <script src="jusModule/port.js"></script>
 
   </body>
 </html>
