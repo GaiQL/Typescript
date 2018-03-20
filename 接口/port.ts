@@ -68,3 +68,40 @@ let mySquare = createSquare({ colour: "red", width: 100 });   //error; 添加字
 
 
 //---------函数类型
+interface SearchFunc{
+ ( source:string,subString:string ):boolean
+}
+let HE:SearchFunc
+// 对于函数类型的类型检查来说，函数的参数名不需要与接口里定义的名字相匹配，但是参数不能多传
+HE = function( src,sub ){
+  console.log( src,sub )
+  return false
+}
+console.log( HE( '123','123' ) );
+
+let SHE = function( src:number,sub:number ):string{
+  console.log(src,sub);
+  return '234'
+}
+// console.log( SHE( 123,321,123 ) )  //不能多传。。
+
+// 可索引的类型  共有支持两种索引签名：字符串和数字。 可以同时使用两种类型的索引，但是数字索引的返回值必须是字符串索引返回值类型的子类型。
+interface StringArray {
+  [index: string]: string;
+}
+
+let myArray: StringArray;
+myArray = {ab:'sb'};
+
+let myStr: string = myArray[0];
+console.log( myArray['ab'] )
+
+interface NumberDictionary{
+  [index:string]:number;
+  length:number;
+  // heihei:string;  // 错误，`name`的类型与索引类型返回值的类型不匹配
+}
+let HERO:NumberDictionary;
+HERO = { a:3,b:4,length:213 }
+
+//类类型

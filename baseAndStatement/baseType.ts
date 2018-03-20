@@ -12,7 +12,7 @@ let Name:string = 'live';
 let Age:number = 123;
 let RMB = ` My name is ${ Name } , i will be ${ Age } years old in next month`
 
-
+   
 // Array
 let list:Array<string|boolean|number> = [321,'321',true] ;  //fist method
 let secondList:number[] = [123,321];   //second method
