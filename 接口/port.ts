@@ -105,3 +105,103 @@ let HERO:NumberDictionary;
 HERO = { a:3,b:4,length:213 }
 
 //类类型
+interface ClockInterface{
+  currentTime:Date;
+  setTime(d:Date):void;
+}
+//   接口描述了类的公共部分，而不是公共和私有两部分。 它不会帮你检查类是否具有某些私有成员。
+class colck implements ClockInterface{
+  //类中必须要有定义的接口，可以多，不能少
+  currentTime:Date;
+  age:string;
+  constructro(hour:number){
+    this.currentTime = new Date();
+  }
+  setTime(heihei:Date){
+    console.log( heihei );
+  }
+}
+//  这里因为当一个类实现了一个接口时，只对其实例部分进行类型检查。想要定义类中的静态部分进行检查：
+//   类的静态部分类型检查；
+interface HAHA {
+  new ( str:number,num:number ):HEIHEI;
+}
+interface HEIHEI {
+  talk():any;
+}
+function Create( ctor:HAHA,str:number,num:number ):HEIHEI{
+  return new ctor( str,num );
+}
+class DigitalClock implements HEIHEI {
+    constructor(h: number, m: number) { }
+    talk() {
+        console.log("beep beep");
+    }
+}
+class AnalogClock implements HEIHEI {
+    constructor(h: number, m: number) { }
+    talk() {
+        console.log("tick tock");
+    }
+}
+
+let digital = Create(DigitalClock, 12, 17);
+let analog = Create(AnalogClock, 7, 32);
+analog.talk();
+
+//因为Create的第一个参数是HAHA类型，在Create(AnalogClock, 7, 32)里，会检查AnalogClock是否符合构造函数签名。
+
+// 继承接口
+interface Shape{
+  color:String
+}
+interface PenStroke {
+    penWidth: number;
+}
+interface sympathize extends Shape,PenStroke{
+  weight:number;
+}
+let square = <sympathize>{};
+//定义了接口后才能添加；
+square.color = 'hei';
+square.penWidth = 123;
+
+//混合类型
+interface Counter{
+  (start:number):string;
+  interval:number;
+  reset():void;
+}
+function getCounter():Counter{
+  let counter = <Counter>function (start: number) { };
+  counter.interval = 123;
+  counter.reset = function(){ console.log('哈哈') };
+  return counter
+}
+let Reset = getCounter();
+console.log( Reset.interval );
+Reset.reset();
+
+//接口继承类；    当接口继承了一个类类型时，它会继承类的成员但不包括其实现。
+/*
+  接口同样会继承到类的private和protected成员。
+  这意味着当你创建了一个接口继承了一个拥有私有或受保护的成员的类时，
+  这个接口类型只能被这个类或其子类所实现（implement）。
+*/
+class Control {
+    private state: any;
+}
+
+//  只有  Control  的子类才能实现  SelectableControl  接口，
+//  因为只有 Control的子类才能够拥有一个声明于Control的私有成员state
+interface SelectableControl extends Control {
+    select(): void;
+}
+
+class Button extends Control implements SelectableControl {
+    select() { }
+}
+//   报错，没有Control中定义的 state;
+// class Image implements SelectableControl {
+//     select() { }
+// }
