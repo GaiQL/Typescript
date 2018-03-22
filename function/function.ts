@@ -43,6 +43,10 @@ function Arg( str:string,...num:number[] ):string{
   Arg( '123',1,2,3 )
 
 
+
+
+
+
 //   箭头函数能保存函数创建时的 this值，而不是调用时的值
 //   ypeScript会警告你犯了一个错误，如果你给编译器设置了--noImplicitThis标记。 它会指出 this.suits[pickedSuit]里的this的类型为any。
 interface HAHA{
@@ -75,4 +79,95 @@ let deck:HEIEHI = {
 let cardPicker = deck.createCardPicker('123','321');
 let pickedCard = cardPicker();
 
-alert("card: " + pickedCard.card + " of " + pickedCard.suit);
+// alert("card: " + pickedCard.card + " of " + pickedCard.suit);
+
+
+
+// 回调函数中的this;
+interface Hi{
+  addFuntion( onclick:( this:void,ev:string ) => void ):void;
+}
+class HeHe implements Hi{
+  addFuntion( onclick:( this:void,ev:string ) => void ){
+    onclick( 'str' );
+    console.log();
+  }
+}
+let hehe = new HeHe(  );
+hehe.addFuntion( function(){
+  console.log( this ) // window;
+} );
+
+//
+// class Handler {
+//     info: string;
+//     onClickBad(this: Handler, e: Event) {
+//         // oops, used this here. using this callback would crash at runtime
+//         this.info = e.message;
+//     }
+// }
+// let h = new Handler();
+
+
+
+//      重载：       函数根据传入参数的不同会返回不同的类型。   如何进行函数返回的类型检查
+
+
+//重载  ----   函数参数和返回值设置any      function pickCard(x:any): any并不是重载列表的一部分
+//    因此这里只有两个重载：一个是接收对象另一个接收数字。 以其它参数调用 pickCard会产生错误。
+function live( x:number ):{ suit:string;card:string };
+function live( x:{ suit:string;card:string }[] ):number;
+//overload  超载
+//signature    签名，信号
+//compatible    兼容的能共处的；
+//implementation  实现履行
+//  在tsconfig中设置了 "noImplicitAny": true   ，所以参数x隐式any会报错；    官方实例中的x参数在定义函数这一行是没有any的
+function live( x:any ):any{
+  if( typeof x == 'object' ){
+    return 123
+  }else if( typeof x == 'number' ){
+    return { suit:'string',card:'string' }
+  }
+}
+
+console.log( live( [{suit:'123',card:'123'},{suit:'123',card:'123'}] ) );
+
+
+// let suits = ["hearts", "spades", "clubs", "diamonds"];
+//
+// function pickCard(x: {suit: string; card: number; }[]): number;
+// function pickCard(x: number): {suit: string; card: number; };
+// function pickCard(x: any): any {
+//     // Check to see if we're working with an object/array
+//     // if so, they gave us the deck and we'll pick the card
+//     if (typeof x == "object") {
+//         let pickedCard = Math.floor(Math.random() * x.length);
+//         return pickedCard;
+//     }
+//     // Otherwise just let them pick the card
+//     else if (typeof x == "number") {
+//         let pickedSuit = Math.floor(x / 13);
+//         return { suit: suits[pickedSuit], card: x % 13 };
+//     }
+// }
+//
+// let myDeck = [{ suit: "diamonds", card: 2 }, { suit: "spades", card: 10 }, { suit: "hearts", card: 4 }];
+// let pickedCard1 = myDeck[pickCard(myDeck)];
+// alert("card: " + pickedCard1.card + " of " + pickedCard1.suit);
+//
+// let pickedCard2 = pickCard(15);
+// alert("card: " + pickedCard2.card + " of " + pickedCard2.suit);
+
+
+let captain : ( heihei:{ str:string;num:number; } ) => void;
+captain = function( str ){
+
+}
+captain( {str:'123',num:123} )
+
+
+//   商户后台  医生和技师的注册  去掉用户 密码  重复  整个联系人方式
+//   出生日期
+//   所有地图的地址再加一个文本框
+//   全款商品改促销时，如果选择了收益归平台---，平台预计收入--促销价   和商家预计收入0
+//   用户创建的手机号11和密码不少于6位
