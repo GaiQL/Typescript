@@ -22,7 +22,7 @@ function loggingIdentity<T>( any:T[] ):T[]{
   return any
 }
 loggingIdentity( ['123',123,321,true,{ heihie:123 }] )
-//or
+//or      
 function loggingIdentityS<T>( any:Array<T> ):Array<T>{
   return any
 }
