@@ -1,0 +1,3 @@
+const num = 123;
+export { num };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZXhwb3J0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vbW9kdWxlL2V4cG9ydC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFTQSxNQUFNLEdBQUcsR0FBVSxHQUFHLENBQUM7QUFDdkIsT0FBTyxFQUFFLEdBQUcsRUFBRSxDQUFDIn0=
