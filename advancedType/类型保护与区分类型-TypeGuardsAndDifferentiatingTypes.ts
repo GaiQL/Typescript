@@ -88,6 +88,7 @@ if (padder instanceof StringPadder) {
 
   你阻止不了将它们赋值给其它类型：
     --strictNullChecks标记可以解决此错误：当你声明一个变量时，它不会自动地包含 null或 undefined。
+    使用了 --strictNullChecks，可选参数会被自动地加上 | undefined:
     当想使用的时候你可以使用联合类型明确的包含它们。
 
   TypeScript会把 null和 undefined区别对待。
@@ -96,3 +97,103 @@ if (padder instanceof StringPadder) {
     string | undefined | null
   是不同的类型。
 */
+let foo = '123';
+foo = null;
+
+function broken(name: string | null): string {
+  function postfix(epithet: string) {
+    return name.charAt(0) + '.  the ' + epithet; // error, 'name' is possibly null
+  }
+  name = name || "Bob";
+  return postfix("great");
+}
+broken(null)
+
+//  类型别名：
+//  类型别名会给一个类型起个新名字。 类型别名有时和接口很像，但是可以作用于原始值，联合类型，元组以及其它任何你需要手写的类型。
+type Name = string;
+type NameResolver = () => string;
+type NameOrResolver = Name | NameResolver;
+
+type Tree<T> = {
+    value: T;
+    left: Tree<T>;
+    right: Tree<T>;
+}
+
+class TryTree implements Tree<number>{
+  value:123;
+  left:TryTree;
+  right:TryTree;
+}
+
+//     与交叉类型一起使用，我们可以创建出一些十分稀奇古怪的类型  :
+type LinkedList<T> = T & { next: LinkedList<T> };
+
+interface Person {
+    name: string;
+}
+
+var people: LinkedList<Person>;
+var s = people.name;
+var s = people.next.name;
+var s = people.next.next.name;
+var s = people.next.next.next.name;
+
+
+//然而，类型别名不能出现在声明右侧的任何地方
+// type Yikes = Array<Yikes>; // error
+
+
+//    接口 vs. 类型别名
+type Alias = { num: number }
+interface Interface {
+    num: number;
+}
+declare function aliased(arg: Alias): Alias;
+declare function interfaced(arg: Interface): Interface;
+
+//  如果你无法通过接口来描述一个类型并且需要使用联合类型或元组类型，这时通常会使用类型别名。
+
+//  字符串字面量类型   :  允许你指定字符串必须的固定值。
+type str = '123' | '321' | '嘿嘿嘿';
+class UIElement{
+  animate(dx: number, dy: number, easing: str) {
+     if (easing === "123") {
+         // ...
+     }
+     else if (easing === "321") {
+     }
+     else if (easing === "嘿嘿嘿") {
+     }
+ }
+}
+let UIElementObj:UIElement = new UIElement();
+// UIElementObj.animate( 123,321,'111' )  //error;
+UIElementObj.animate( 123,321,'123' )  //
+
+// 字符串字面量类型还可以用于区分函数重载：
+function strFun( str:'111'|'222' ):string{
+  if( str == '111' ){
+    return str
+  }else if( str == '222' ){
+    return str
+  }
+}
+// strFun('2222'); //error
+
+// 数字字面量类型:  我们很少直接这样使用，但它们可以用在缩小范围调试bug的时候：
+function rollDie(): 1 | 2 | 3 | 4 | 5 | 6 {
+    // ...
+    // return 7  //errors
+    return 1
+}
+function foo____(x: number) {
+    // if (x !== 1 || x !== 2) {   //error
+    //     //         ~~~~~~~
+    //     // Operator '!==' cannot be applied to types '1' and '2'.
+    // }
+}
+
+//   枚举成员类型  :  每个枚举成员都是用字面量初始化的时候枚举成员是具有类型的。
+     // 单例类型：   多数是指枚举成员类型和数字/字符串字面量类型
