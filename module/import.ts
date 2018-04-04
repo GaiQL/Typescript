@@ -1,4 +1,9 @@
-import { num } from './export';
-console.log( num );
+import {   numberRegexp,
+  StringValidator,
+  heihei } from './export';
 
-      
+// import * as validator from './export';
+
+// import zip = require("./export");
+
+console.log( numberRegexp );

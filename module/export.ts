@@ -1,11 +1,20 @@
-// class ZipCodeValidator{
-//   heihei:number;
-//     constructor(){
-//       this.heihei = 1123;
-//     }
-// }
-// // export { ZipCodeValidator };
-// export { ZipCodeValidator as mainValidator };
+interface StringValidator {
+    isAcceptable(s: string): boolean;
+}
 
-const num:number = 123;
-export { num };   
+const numberRegexp = /^[0-9]+$/;
+
+class ZipCodeValidator implements StringValidator {
+    isAcceptable(s: string) {
+        return s.length === 5 && numberRegexp.test(s);
+    }
+}
+
+export {
+  numberRegexp,
+  StringValidator,
+  ZipCodeValidator as heihei
+}
+// export * from "./export";
+
+// export = ZipCodeValidator;
