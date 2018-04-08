@@ -5,9 +5,14 @@
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
-        "outDir":"./jusModule",
+        "outDir":"../jusModule",
         "inlineSourceMap":true,
-        "target": "es6",
-        "lib":["DOM","ES6","DOM.Iterable","ScriptHost"]
-    }
+        "target": "es6"
+    },
+    "include": [
+        "*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
 }
