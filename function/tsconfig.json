@@ -7,7 +7,7 @@
         "preserveConstEnums": true,
         "outDir":"../jusModule",
         "inlineSourceMap":true,
-        "target": "es6",
+        "target": "ES6",
         "noImplicitThis":true
     },
     "include": [
