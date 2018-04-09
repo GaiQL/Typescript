@@ -22,7 +22,7 @@ function color(value: string) { // 这是一个装饰器工厂
         // do something with "target" and "value"...
     }
 }
-
+    
 function fz() {
     let str:string = '123';
     console.log("f(): evaluated");
