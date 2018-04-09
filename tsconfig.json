@@ -8,7 +8,11 @@
         "preserveConstEnums": true,
         "outDir":"./jusModule",
         "inlineSourceMap":true,
+<<<<<<< HEAD
         "target": "ES6",
+=======
+        "target": "es6",
+>>>>>>> 67cf124dffda07f921464290795644e363e84061
         "lib":["DOM","ES6","DOM.Iterable","ScriptHost"]
     }
 }
