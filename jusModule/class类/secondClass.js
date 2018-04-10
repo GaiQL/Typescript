@@ -1,133 +1,168 @@
-class people {
-    constructor(name) {
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var people = (function () {
+    function people(name) {
         this.name = name;
         this.age = 123;
     }
-    conSoleAge() {
+    people.prototype.conSoleAge = function () {
         console.log(this.age);
-    }
-    conSoleName() {
+    };
+    people.prototype.conSoleName = function () {
         console.log(this.name);
+    };
+    return people;
+}());
+var Hong = (function (_super) {
+    __extends(Hong, _super);
+    function Hong() {
+        var _this = _super.call(this, 'hong') || this;
+        console.log(_this.name);
+        _super.prototype.conSoleName.call(_this);
+        return _this;
     }
-}
-class Hong extends people {
-    constructor() {
-        super('hong');
-        console.log(this.name);
-        super.conSoleName();
-    }
-}
-class Ming {
-    constructor(name) {
+    return Hong;
+}(people));
+var Ming = (function () {
+    function Ming(name) {
         this.Mname = name;
     }
-}
-let People = new people('P');
-let xiaoHong = new Hong();
-let xiaoming = new Ming('M');
+    return Ming;
+}());
+var People = new people('P');
+var xiaoHong = new Hong();
+var xiaoming = new Ming('M');
 People = xiaoHong;
-class Drinks {
-    constructor(name) {
+var Drinks = (function () {
+    function Drinks(name) {
         this.name = name;
         this.name = name;
     }
-}
-let password = 'heihei';
-class Employee {
-    get fullName() {
-        return this._xxx;
+    return Drinks;
+}());
+var password = 'heihei';
+var Employee = (function () {
+    function Employee() {
     }
-    set fullName(newName) {
-        if (password && password == 'heihei') {
-            this._xxx = newName;
-        }
-        else {
-            console.log('Error');
-        }
-    }
-}
-let employee = new Employee();
+    Object.defineProperty(Employee.prototype, "fullName", {
+        get: function () {
+            return this._xxx;
+        },
+        set: function (newName) {
+            if (password && password == 'heihei') {
+                this._xxx = newName;
+            }
+            else {
+                console.log('Error');
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Employee;
+}());
+var employee = new Employee();
 employee.fullName = 'heiheihei';
 if (employee.fullName) {
     console.log(employee.fullName);
 }
-class Miss {
-    constructor(name) {
+var Miss = (function () {
+    function Miss(name) {
         this.name = name;
-        console.log(`my name is ${this.name}`);
+        console.log("my name is " + this.name);
     }
-    makeMiss() {
+    Miss.prototype.makeMiss = function () {
         console.log(this.name);
-    }
-}
-Miss.state = {
-    a: 1,
-    b: 2,
-    c: 3,
-};
-class MissShe extends Miss {
-    constructor(name) {
-        super(name);
+    };
+    Miss.state = {
+        a: 1,
+        b: 2,
+        c: 3,
+    };
+    return Miss;
+}());
+var MissShe = (function (_super) {
+    __extends(MissShe, _super);
+    function MissShe(name) {
+        var _this = _super.call(this, name) || this;
         console.log(Miss.state.a);
+        return _this;
     }
-    makeSound() {
+    MissShe.prototype.makeSound = function () {
         console.log('hi girl');
-    }
-    makeOther() {
+    };
+    MissShe.prototype.makeOther = function () {
         console.log('other');
-    }
-}
+    };
+    return MissShe;
+}(Miss));
 ;
-class MissHe extends Miss {
-    constructor(name) {
-        super(name);
+var MissHe = (function (_super) {
+    __extends(MissHe, _super);
+    function MissHe(name) {
+        return _super.call(this, name) || this;
     }
-    makeSound() {
-    }
-}
-let she;
-she = new MissShe(`xiaoMing`);
+    MissHe.prototype.makeSound = function () {
+    };
+    return MissHe;
+}(Miss));
+var she;
+she = new MissShe("xiaoMing");
 she.makeSound();
-let he = new MissHe(`xiaoHong`);
-class Department {
-    constructor(name) {
+var he = new MissHe("xiaoHong");
+var Department = (function () {
+    function Department(name) {
         this.name = name;
     }
-    printName() {
+    Department.prototype.printName = function () {
         console.log('Department name: ' + this.name);
+    };
+    return Department;
+}());
+var AccountingDepartment = (function (_super) {
+    __extends(AccountingDepartment, _super);
+    function AccountingDepartment() {
+        return _super.call(this, 'Accounting and Auditing') || this;
     }
-}
-class AccountingDepartment extends Department {
-    constructor() {
-        super('Accounting and Auditing');
-    }
-    printMeeting() {
+    AccountingDepartment.prototype.printMeeting = function () {
         console.log('The Accounting Department meets each Monday at 10am.');
-    }
-    generateReports() {
+    };
+    AccountingDepartment.prototype.generateReports = function () {
         console.log('Generating accounting reports...');
-    }
-}
-let department;
+    };
+    return AccountingDepartment;
+}(Department));
+var department;
 department = new AccountingDepartment();
 department.printName();
 department.printMeeting();
-class Wonder {
-    greet() {
+var Wonder = (function () {
+    function Wonder() {
+    }
+    Wonder.prototype.greet = function () {
         if (this.greeting) {
             return "Hello, " + this.greeting;
         }
         else {
             return Wonder.standardGreeting;
         }
-    }
-}
-Wonder.standardGreeting = "Hello, there";
-let first;
+    };
+    Wonder.standardGreeting = "Hello, there";
+    return Wonder;
+}());
+var first;
 first = new Wonder();
 console.log(first.greet());
-let second = Wonder;
+var second = Wonder;
 second.standardGreeting = "Hey there!";
-let third = new second();
+var third = new second();
 console.log(third.greet());
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2Vjb25kQ2xhc3MuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9jbGFzc+exuy9zZWNvbmRDbGFzcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUdFLFlBQWEsSUFBVztRQUN0QixJQUFJLENBQUMsSUFBSSxHQUFHLElBQUksQ0FBQztRQUNqQixJQUFJLENBQUMsR0FBRyxHQUFHLEdBQUcsQ0FBQztJQUNqQixDQUFDO0lBQ08sVUFBVTtRQUNoQixPQUFPLENBQUMsR0FBRyxDQUFDLElBQUksQ0FBQyxHQUFHLENBQUMsQ0FBQTtJQUN2QixDQUFDO0lBQ1MsV0FBVztRQUNuQixPQUFPLENBQUMsR0FBRyxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsQ0FBQTtJQUN4QixDQUFDO0NBQ0Y7QUFFRCxVQUFXLFNBQVEsTUFBTTtJQUN2QjtRQUNFLEtBQUssQ0FBRSxNQUFNLENBQUUsQ0FBQztRQUNoQixPQUFPLENBQUMsR0FBRyxDQUFFLElBQUksQ0FBQyxJQUFJLENBQUUsQ0FBQztRQUV6QixLQUFLLENBQUMsV0FBVyxFQUFFLENBQUM7SUFFdEIsQ0FBQztDQUNGO0FBRUQ7SUFFRSxZQUFhLElBQVc7UUFDdEIsSUFBSSxDQUFDLEtBQUssR0FBRyxJQUFJLENBQUM7SUFDcEIsQ0FBQztDQUNGO0FBQ0QsSUFBSSxNQUFNLEdBQUcsSUFBSSxNQUFNLENBQUUsR0FBRyxDQUFFLENBQUM7QUFFL0IsSUFBSSxRQUFRLEdBQUcsSUFBSSxJQUFJLEVBQUUsQ0FBQztBQU0xQixJQUFJLFFBQVEsR0FBRyxJQUFJLElBQUksQ0FBRSxHQUFHLENBQUUsQ0FBQztBQUUvQixNQUFNLEdBQUcsUUFBUSxDQUFDO0FBb0JsQjtJQUNFLFlBQ1MsSUFBVztRQUFYLFNBQUksR0FBSixJQUFJLENBQU87UUFFbEIsSUFBSSxDQUFDLElBQUksR0FBRyxJQUFJLENBQUM7SUFDbkIsQ0FBQztDQUNGO0FBSUQsSUFBSSxRQUFRLEdBQUcsUUFBUSxDQUFDO0FBRXhC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
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2Vjb25kQ2xhc3MuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9jbGFzc+exuy9zZWNvbmRDbGFzcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUE7SUFHRSxnQkFBYSxJQUFXO1FBQ3RCLElBQUksQ0FBQyxJQUFJLEdBQUcsSUFBSSxDQUFDO1FBQ2pCLElBQUksQ0FBQyxHQUFHLEdBQUcsR0FBRyxDQUFDO0lBQ2pCLENBQUM7SUFDTywyQkFBVSxHQUFsQjtRQUNFLE9BQU8sQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLEdBQUcsQ0FBQyxDQUFBO0lBQ3ZCLENBQUM7SUFDUyw0QkFBVyxHQUFyQjtRQUNFLE9BQU8sQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxDQUFBO0lBQ3hCLENBQUM7SUFDSCxhQUFDO0FBQUQsQ0FBQyxBQWJELElBYUM7QUFFRDtJQUFtQix3QkFBTTtJQUN2QjtRQUFBLFlBQ0Usa0JBQU8sTUFBTSxDQUFFLFNBS2hCO1FBSkMsT0FBTyxDQUFDLEdBQUcsQ0FBRSxLQUFJLENBQUMsSUFBSSxDQUFFLENBQUM7UUFFekIsaUJBQU0sV0FBVyxZQUFFLENBQUM7O0lBRXRCLENBQUM7SUFDSCxXQUFDO0FBQUQsQ0FBQyxBQVJELENBQW1CLE1BQU0sR0FReEI7QUFFRDtJQUVFLGNBQWEsSUFBVztRQUN0QixJQUFJLENBQUMsS0FBSyxHQUFHLElBQUksQ0FBQztJQUNwQixDQUFDO0lBQ0gsV0FBQztBQUFELENBQUMsQUFMRCxJQUtDO0FBQ0QsSUFBSSxNQUFNLEdBQUcsSUFBSSxNQUFNLENBQUUsR0FBRyxDQUFFLENBQUM7QUFFL0IsSUFBSSxRQUFRLEdBQUcsSUFBSSxJQUFJLEVBQUUsQ0FBQztBQU0xQixJQUFJLFFBQVEsR0FBRyxJQUFJLElBQUksQ0FBRSxHQUFHLENBQUUsQ0FBQztBQUUvQixNQUFNLEdBQUcsUUFBUSxDQUFDO0FBb0JsQjtJQUNFLGdCQUNTLElBQVc7UUFBWCxT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

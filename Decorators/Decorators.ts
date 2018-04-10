@@ -17,16 +17,19 @@ function sealed(target:any) {
 
 
 //  装饰器工厂
+//  如果我们要定制一个修饰器如何应用到一个声明上，我们得写一个装饰器工厂函数。
 function color(value: string) { // 这是一个装饰器工厂
     return function ( target:any ) { //  这是装饰器
         // do something with "target" and "value"...
     }
 }
-    
+
 function fz() {
-    let str:string = '123';
     console.log("f(): evaluated");
     return function (target:any, propertyKey: string, descriptor: PropertyDescriptor) {
+        console.log( descriptor );
+        console.log( propertyKey );
+        console.log( target );
         console.log("f(): called");
     }
 }

@@ -1,63 +1,85 @@
-class Greeter {
-    constructor(message) {
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var Greeter = (function () {
+    function Greeter(message) {
         this.greeting = message;
     }
-    greet() {
+    Greeter.prototype.greet = function () {
         console.log(this.greeting);
-    }
-}
-let greeter = new Greeter('嘿嘿');
+    };
+    return Greeter;
+}());
+var greeter = new Greeter('嘿嘿');
 greeter.greet();
 console.log(greeter.greeting);
-class Animal {
-    constructor(Name) {
+var Animal = (function () {
+    function Animal(Name) {
         this.name = Name;
     }
-    move(num = 0) {
-        console.log(`${this.name} moved ${num} m`);
+    Animal.prototype.move = function (num) {
+        if (num === void 0) { num = 0; }
+        console.log(this.name + " moved " + num + " m");
+    };
+    return Animal;
+}());
+var Dog = (function (_super) {
+    __extends(Dog, _super);
+    function Dog(name) {
+        return _super.call(this, name) || this;
     }
-}
-class Dog extends Animal {
-    constructor(name) {
-        super(name);
+    Dog.prototype.move = function (num) {
+        if (num === void 0) { num = 50; }
+        _super.prototype.move.call(this, num);
+    };
+    return Dog;
+}(Animal));
+var Snake = (function (_super) {
+    __extends(Snake, _super);
+    function Snake(name) {
+        var _this = _super.call(this, name) || this;
+        _this.weight = 50;
+        console.log(_this.weight);
+        return _this;
     }
-    move(num = 50) {
-        super.move(num);
-    }
-}
-class Snake extends Animal {
-    constructor(name) {
-        super(name);
-        this.weight = 50;
-        console.log(this.weight);
-    }
-    move(num = 50) {
-        super.move(num);
-    }
-}
-let dog = new Dog('Dog');
-let snake = new Snake('Snake');
+    Snake.prototype.move = function (num) {
+        if (num === void 0) { num = 50; }
+        _super.prototype.move.call(this, num);
+    };
+    return Snake;
+}(Animal));
+var dog = new Dog('Dog');
+var snake = new Snake('Snake');
 dog.move(30);
 snake.move(66);
-class person {
-    constructor(name, age) {
+var person = (function () {
+    function person(name, age) {
         this.name = name;
         this.age = age;
     }
-    Talkname() {
-        console.log(`My name is ${this.name}`);
-    }
-    TalkAge() {
-        console.log(`I'm ${this.age} years old`);
-    }
-}
-let XiaoMing = new person('小名', 18);
+    person.prototype.Talkname = function () {
+        console.log("My name is " + this.name);
+    };
+    person.prototype.TalkAge = function () {
+        console.log("I'm " + this.age + " years old");
+    };
+    return person;
+}());
+var XiaoMing = new person('小名', 18);
 XiaoMing.Talkname();
-class hahahhaha {
-    constructor() {
+var hahahhaha = (function () {
+    function hahahhaha() {
         this.name = '123';
     }
-}
-let hahahahahahhah = new hahahhaha();
+    return hahahhaha;
+}());
+var hahahahahahhah = new hahahhaha();
 console.log(hahahahahahhah.name);
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY2xhc3MuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9jbGFzc+exuy9jbGFzcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUVFLFlBQWEsT0FBYztRQUN6QixJQUFJLENBQUMsUUFBUSxHQUFHLE9BQU8sQ0FBQztJQUMxQixDQUFDO0lBQ0QsS0FBSztRQUNILE9BQU8sQ0FBQyxHQUFHLENBQUUsSUFBSSxDQUFDLFFBQVEsQ0FBRSxDQUFDO0lBQy9CLENBQUM7Q0FDRjtBQUVELElBQUksT0FBTyxHQUFHLElBQUksT0FBTyxDQUFFLElBQUksQ0FBRSxDQUFDO0FBQ2xDLE9BQU8sQ0FBQyxLQUFLLEVBQUUsQ0FBQztBQUNoQixPQUFPLENBQUMsR0FBRyxDQUFFLE9BQU8sQ0FBQyxRQUFRLENBQUUsQ0FBQztBQUloQztJQUVFLFlBQW9CLElBQVc7UUFDN0IsSUFBSSxDQUFDLElBQUksR0FBRyxJQUFJLENBQUE7SUFDbEIsQ0FBQztJQUNNLElBQUksQ0FBRSxNQUFhLENBQUM7UUFDekIsT0FBTyxDQUFDLEdBQUcsQ0FBRSxHQUFJLElBQUksQ0FBQyxJQUFLLFVBQVUsR0FBRyxJQUFJLENBQUUsQ0FBQTtJQUNoRCxDQUFDO0NBQ0Y7QUFFRCxTQUFVLFNBQVEsTUFBTTtJQUN0QixZQUFhLElBQVc7UUFDdEIsS0FBSyxDQUFFLElBQUksQ0FBRSxDQUFDO0lBQ2hCLENBQUM7SUFDRCxJQUFJLENBQUUsTUFBYSxFQUFFO1FBQ25CLEtBQUssQ0FBQyxJQUFJLENBQUUsR0FBRyxDQUFFLENBQUM7SUFDcEIsQ0FBQztDQUNGO0FBQ0QsV0FBWSxTQUFRLE1BQU07SUFFeEIsWUFBYSxJQUFXO1FBQ3RCLEtBQUssQ0FBRSxJQUFJLENBQUUsQ0FBQztRQUlkLElBQUksQ0FBQyxNQUFNLEdBQUcsRUFBRSxDQUFDO1FBQ2pCLE9BQU8sQ0FBQyxHQUFHLENBQUUsSUFBSSxDQUFDLE1BQU0sQ0FBRSxDQUFBO0lBQzVCLENBQUM7SUFDRCxJQUFJLENBQUUsTUFBYSxFQUFFO1FBQ25CLEtBQUssQ0FBQyxJQUFJLENBQUUsR0FBRyxDQUFFLENBQUM7SUFDcEIsQ0FBQztDQUNGO0FBRUQsSUFBSSxHQUFHLEdBQUcsSUFBSSxHQUFHLENBQUUsS0FBSyxDQUFFLENBQUM7QUFDM0IsSUFBSSxLQUFLLEdBQVUsSUFBSSxLQUFLLENBQUUsT0FBTyxDQUFFLENBQUM7QUFFeEMsR0FBRyxDQUFDLElBQUksQ0FBQyxFQUFFLENBQUMsQ0FBQztBQUNiLEtBQUssQ0FBQyxJQUFJLENBQUUsRUFBRSxDQUFFLENBQUM7QUFFakI7SUFHRSxZQUFhLElBQVcsRUFBQyxHQUFVO1FBQ2pDLElBQUksQ0FBQyxJQUFJLEdBQUcsSUFBSSxDQUFDO1FBQ2pCLElBQUksQ0FBQyxHQUFHLEdBQUcsR0FBRyxDQUFDO0lBQ2pCLENBQUM7SUFFTSxRQUFRO1FBQ2IsT0FBTyxDQUFDLEdBQUcsQ0FBRSxjQUFjLElBQUksQ0FBQyxJQUFJLEVBQUUsQ0FBRSxDQUFDO0lBQzNDLENBQUM7SUFFTyxPQUFPO1FBQ2IsT0FBTyxDQUFDLEdBQUcsQ0FBRSxPQUFRLElBQUksQ0FBQyxHQUFJLFlBQVksQ0FBRSxDQUFDO0lBQy9DLENBQUM7Q0FDRjtBQUNELElBQUksUUFBUSxHQUFHLElBQUksTUFBTSxDQUFFLElBQUksRUFBQyxFQUFFLENBQUUsQ0FBQztBQUNyQyxRQUFRLENBQUMsUUFBUSxFQUFFLENBQUE7QUFFbkI7SUFFRztRQUNFLElBQUksQ0FBQyxJQUFJLEdBQUcsS0FBSyxDQUFDO0lBQ3BCLENBQUM7Q0FDSDtBQUNELElBQUksY0FBYyxHQUFHLElBQUksU0FBUyxFQUFFLENBQUM7QUFDckMsT0FBTyxDQUFDLEdBQUcsQ0FBRSxjQUFjLENBQUMsSUFBSSxDQUFFLENBQUEifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY2xhc3MuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9jbGFzc+exuy9jbGFzcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUE7SUFFRSxpQkFBYSxPQUFjO1FBQ3pCLElBQUksQ0FBQyxRQUFRLEdBQUcsT0FBTyxDQUFDO0lBQzFCLENBQUM7SUFDRCx1QkFBSyxHQUFMO1FBQ0UsT0FBTyxDQUFDLEdBQUcsQ0FBRSxJQUFJLENBQUMsUUFBUSxDQUFFLENBQUM7SUFDL0IsQ0FBQztJQUNILGNBQUM7QUFBRCxDQUFDLEFBUkQsSUFRQztBQUVELElBQUksT0FBTyxHQUFHLElBQUksT0FBTyxDQUFFLElBQUksQ0FBRSxDQUFDO0FBQ2xDLE9BQU8sQ0FBQyxLQUFLLEVBQUUsQ0FBQztBQUNoQixPQUFPLENBQUMsR0FBRyxDQUFFLE9BQU8sQ0FBQyxRQUFRLENBQUUsQ0FBQztBQUloQztJQUVFLGdCQUFvQixJQUFXO1FBQzdCLElBQUksQ0FBQyxJQUFJLEdBQUcsSUFBSSxDQUFBO0lBQ2xCLENBQUM7SUFDTSxxQkFBSSxHQUFYLFVBQWEsR0FBYztRQUFkLG9CQUFBLEVBQUEsT0FBYztRQUN6QixPQUFPLENBQUMsR0FBRyxDQUFNLElBQUksQ0FBQyxJQUFJLGVBQVcsR0FBRyxPQUFJLENBQUUsQ0FBQTtJQUNoRCxDQUFDO0lBQ0gsYUFBQztBQUFELENBQUMsQUFSRCxJQVFDO0FBRUQ7SUFBa0IsdUJBQU07SUFDdEIsYUFBYSxJQUFXO2VBQ3RCLGtCQUFPLElBQUksQ0FBRTtJQUNmLENBQUM7SUFDRCxrQkFBSSxHQUFKLFVBQU0sR0FBZTtRQUFmLG9CQUFBLEVBQUEsUUFBZTtRQUNuQixpQkFBTSxJQUFJLFlBQUUsR0FBRyxDQUFFLENBQUM7SUFDcEIsQ0FBQztJQUNILFVBQUM7QUFBRCxDQUFDLEFBUEQsQ0FBa0IsTUFBTSxHQU92QjtBQUNEO0lBQW9CLHlCQUFNO0lBRXhCLGVBQWEsSUFBVztRQUF4QixZQUNFLGtCQUFPLElBQUksQ0FBRSxTQU1kO1FBRkMsS0FBSSxDQUFDLE1BQU0sR0FBRyxFQUFFLENBQUM7UUFDakIsT0FBTyxDQUFDLEdBQUcsQ0FBRSxLQUFJLENBQUMsTUFBTSxDQUFFLENBQUE7O0lBQzVCLENBQUM7SUFDRCxvQkFBSSxHQUFKLFVBQU0sR0FBZTtRQUFmLG9CQUFBLEVBQUEsUUFBZTtRQUNuQixpQkFBTSxJQUFJLFlBQUUsR0FBRyxDQUFFLENBQUM7SUFDcEIsQ0FBQztJQUNILFlBQUM7QUFBRCxDQUFDLEFBYkQsQ0FBb0IsTUFBTSxHQWF6QjtBQUVELElBQUksR0FBRyxHQUFHLElBQUksR0FBRyxDQUFFLEtBQUssQ0FBRSxDQUFDO0FBQzNCLElBQUksS0FBSyxHQUFVLElBQUksS0FBSyxDQUFFLE9BQU8sQ0FBRSxDQUFDO0FBRXhDLEdBQUcsQ0FBQyxJQUFJLENBQUMsRUFBRSxDQUFDLENBQUM7QUFDYixLQUFLLENBQUMsSUFBSSxDQUFFLEVBQUUsQ0FBRSxDQUFDO0FBRWpCO0lBR0UsZ0JBQWEsSUFBVyxFQUFDLEdBQVU7UUFDakMsSUFBSSxDQUFDLElBQUksR0FBRyxJQUFJLENBQUM7UUFDakIsSUFBSSxDQUFDLEdBQUcsR0FBRyxHQUFHLENBQUM7SUFDakIsQ0FBQztJQUVNLHlCQUFRLEdBQWY7UUFDRSxPQUFPLENBQUMsR0FBRyxDQUFFLGdCQUFjLElBQUksQ0FBQyxJQUFNLENBQUUsQ0FBQztJQUMzQyxDQUFDO0lBRU8sd0JBQU8sR0FBZjtRQUNFLE9BQU8sQ0FBQyxHQUFHLENBQUUsU0FBUSxJQUFJLENBQUMsR0FBRyxlQUFhLENBQUUsQ0FBQztJQUMvQyxDQUFDO0lBQ0gsYUFBQztBQUFELENBQUMsQUFmRCxJQWVDO0FBQ0QsSUFBSSxRQUFRLEdBQUcsSUFBSSxNQUFNLENBQUUsSUFBSSxFQUFDLEVBQUUsQ0FBRSxDQUFDO0FBQ3JDLFFBQVEsQ0FBQyxRQUFRLEVBQUUsQ0FBQTtBQUVuQjtJQUVHO1FBQ0UsSUFBSSxDQUFDLElBQUksR0FBRyxLQUFLLENBQUM7SUFDcEIsQ0FBQztJQUNKLGdCQUFDO0FBQUQsQ0FBQyxBQUxELElBS0M7QUFDRCxJQUFJLGNBQWMsR0FBRyxJQUFJLFNBQVMsRUFBRSxDQUFDO0FBQ3JDLE9BQU8sQ0FBQyxHQUFHLENBQUUsY0FBYyxDQUFDLElBQUksQ0FBRSxDQUFBIn0=
